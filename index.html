@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Sekolah Menengah Kejuruan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior:smooth;
+        }
+
+        /* Header saat transparan (default) */
+        .transparent-bg {
+            background-color: #ffffff;/* Warna latar belakang abu-abu */
+            color: black; 
+        }
+         /* Gambar-gambar latar belakang slideshow */
+        .bg-slide img {
+            height: 100%; /* Gambar diatur tingginya sesuai dengan parent (banner) */
+            width: auto; /* Lebar gambar disesuaikan agar menjaga aspek rasio */
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* Styling tambahan untuk slideshow */
+        .slideshow-container {
+            background-color: black;
+            max-width: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+            margin: auto;
+            justify-content: center;
+            height: 450px;
+        }
+        .img-gallery:hover{
+            transform: scale(1.02);
+        }
+        /* Styling untuk gambar slide */
+        .mySlides {
+            max-width: 100%;
+            width: 100%;
+            height: 100%; /* Tetapkan tinggi tetap untuk gambar */
+            background-position: center;
+            background-size: contain; /* Gambar akan tetap memiliki ukuran aslinya dan muat dalam elemen */
+            background-repeat: no-repeat; /* Untuk menghindari pengulangan gambar */
+        }
+        .image{
+            width: 100%;
+            height: 100%;
+            opacity: 50%;
+        }
+        #dropdownDots{
+            margin-top: 68px;
+            border-radius: 0px 0px 16px 16px;
+        }
+        .underlined{
+            border-bottom: 1px solid gray;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+        .card {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card:hover{
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+        }
+        /* Style untuk panel div */
+        .read-more-container {
+            max-height: 500px; /* Tinggi maksimum panel div */
+            overflow: hidden;
+        }
+        .read-more-content {
+            display: none;
+        }
+        .read-more-button {
+            display: block;
+            cursor: pointer;
+            color: blue;
+        }
+        .font-9{
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        @media (min-width: 1024px) {
+            /* Gambar-gambar latar belakang slideshow */
+        .bg-slide img {
+            height: 100%; /* Gambar diatur tingginya sesuai dengan parent (banner) */
+            width: auto; /* Lebar gambar disesuaikan agar menjaga aspek rasio */
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+        }
+        .transparent-bg {
+            background-color: rgba(0, 0, 0, 0.2); /* Warna latar belakang transparan */
+            transition: background-color 0.3s ease;
+            border-bottom: 2px solid rgb(0, 174, 255);
+            color: rgb(0, 174, 255);
+            padding:20px;
+        }
+
+        .transparent-bg a{
+            color: white;
+        }
+
+        .transparent-bg a:hover{
+            text-shadow: 0 0 0.2rem white;
+            transition: .5s ease;
+        }
+         /* Header saat di-scroll (berubah menjadi abu-abu) */
+         .scrolled-bg {
+            background-color: rgb(0, 174, 255);/* Warna latar belakang abu-abu */
+            color: white;
+            padding:20px;
+            border-bottom: 1px solid rgb(0, 174, 255);
+        }
+         .scrolled-bg a:hover{
+            text-shadow: 0 0 0.2rem white;
+            transition: .5s ease;
+        }
+        /* Styling tambahan untuk slideshow */
+        .slideshow-container {
+            background-color: black;
+            max-width: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+            margin: auto;
+            justify-content: center;
+            height: 800px;
+        }
+        /* Style untuk panel div */
+        .read-more-container {
+            max-height: 300px; /* Tinggi maksimum panel div */
+            overflow: hidden;
+        }
+        .read-more-content {
+            display: none;
+        }
+        .read-more-button {
+            display: block;
+            cursor: pointer;
+            color: blue;
+        }
+        }
+        @media (max-width: 640px) {
+            .svg{
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+            }
+        }
+    </style>
+    
+</head>
+<body class="bg-gray-200 max-w-screen-2xl overflow-x-hidden mx-auto shadow-2xl">
+
+<!-- Header -->
+<header class="bg-gray-500 tracking-light leading-3 p-4 lg:p-2 text-white fixed z-10 top-0 shadow-2xl left-0 w-full transparent-bg">
+    <div class="mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+            <img src="logo.png" class="h-12 mr-3" alt="School Logo">
+            <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-white">Digital Desain</span>
+        </div>
+        <nav class="hidden lg:block">
+            <ul class="flex text-md:text-lg">
+                <li><a href="#" class="px-6 py-2">Beranda</a></li>
+                <li><a href="#product" class="px-6 py-2">Produk Jasa</a></li>
+                <li><a href="#about" class="px-6 py-2">Tentang Kami</a></li>
+                <li><a href="#contact" class="px-6 py-2">Kontak</a></li>
+            </ul>
+        </nav>
+        <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-2 lg:hidden text-sm font-medium text-center rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50" type="button"> 
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
+              <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+            </svg>
+        </button>
+<!-- Dropdown menu -->
+<div id="dropdownDots" class="z-6 fixed hidden divide-y divide-gray-100 bg-white shadow-2xl text-white fixed top-0 left-0 w-full">
+    <ul class="py-2 pb-4 text-md:text-xl text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+      <li>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white underlined">Beranda</a>
+      </li>
+      <li>
+        <a href="#product" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white underlined">Produk Jasa</a>
+      </li>
+      <li>
+        <a href="#about" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white underlined">Tentang Kami</a>
+      </li>
+      <li>
+        <a href="#contact" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white underlined">Kontak</a>
+      </li>
+    </ul>
+    </div>
+    </div>
+</header>
+
+<!-- Banner -->
+    <div class="relative z-90 flex mt-16 lg:mt-0 justify-center items-center h-full w-full">
+        <div class="relative w-full max-w-screen-2xl">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="edit1.jpg" alt="Slide 1" class="image object-cover object-center">
+                </div>
+    
+                <div class="mySlides fade">
+                    <img src="edit2.jpg" alt="Slide 2" class="image object-cover object-center">
+                </div>
+    
+                <div class="mySlides fade">
+                    <img src="edit3.jpg" alt="Slide 3" class="image object-cover object-center">
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto absolute bottom-16 left-4 z-80">
+            <div class="flex"></div>
+            <h1 class="text-2xl sm:text-4xl font-semibold text-white">Selamat datang di Digital Desain!</h1>
+            <p class="mt-4 text-md:text-lg text-white">Kami adalah solusi terbaik untuk kebutuhan pengeditan foto Anda. Dengan tim profesional kami, kami hadir untuk memberikan hasil terbaik yang memenuhi standar kualitas tertinggi.</p>
+            <a href="#about" class="mt-8 rounded-lg inline-block px-6 py-3 bg-yellow-500 text-white hover:bg-yellow-600 transition duration-300" id="product">Info Lebih Lanjut</a>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<section class="py-8">
+    <div class="text-2xl sm:text-4xl font-bold text-gray-800 mx-auto flex justify-center mb-8"><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16"> <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z"/> </svg><span class="ml-4 text-2xl sm:text-4xl">Produk Jasa</span></div>
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-2">
+          <div class="card bg-blue-200 hover:bg-blue-300 lg:h-40 transition duration-700 ease-in-out">
+              <a href="sarpras.html#jurusan">
+                  <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-camera2" viewBox="0 0 16 16"> <path d="M5 8c0-1.657 2.343-3 4-3V4a4 4 0 0 0-4 4z"/> <path d="M12.318 3h2.015C15.253 3 16 3.746 16 4.667v6.666c0 .92-.746 1.667-1.667 1.667h-2.015A5.97 5.97 0 0 1 9 14a5.972 5.972 0 0 1-3.318-1H1.667C.747 13 0 12.254 0 11.333V4.667C0 3.747.746 3 1.667 3H2a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1h.682A5.97 5.97 0 0 1 9 2c1.227 0 2.367.368 3.318 1zM2 4.5a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0zM14 8A5 5 0 1 0 4 8a5 5 0 0 0 10 0z"/> </svg>
+            <h2 class="text-2xl font-semibold ml-2">Editing Foto Profesional</h2>
+          </div>
+            <p class="mt-4">Transformasikan foto Anda menjadi karya seni dengan sentuhan profesional kami. Kami menyediakan berbagai layanan, mulai dari retouching hingga manipulasi gambar.</p>
+            </a>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="card bg-green-200 hover:bg-green-300 lg:h-40 transition duration-700 ease-in-out">
+              <a href="sarpras.html#jurusan1">
+                  <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16"> <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/> <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/> </svg>
+            <h2 class="text-2xl font-semibold ml-2">Restorasi Foto</h2>
+          </div>
+            <p class="mt-4">Pulihkan kenangan berharga Anda dengan layanan restorasi foto kami. Kami dapat mengembalikan foto-foto lama Anda menjadi kondisi terbaiknya.</p>
+              </a>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="card bg-yellow-200 hover:bg-yellow-300 lg:h-40 transition duration-700 ease-in-out">
+              <a href="sarpras.html#jurusan2">
+              <div class="flex">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-brush" viewBox="0 0 16 16"> <path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.067 6.067 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.118 8.118 0 0 1-3.078.132 3.659 3.659 0 0 1-.562-.135 1.382 1.382 0 0 1-.466-.247.714.714 0 0 1-.204-.288.622.622 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896.126.007.243.025.348.048.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04zM4.705 11.912a1.23 1.23 0 0 0-.419-.1c-.246-.013-.573.05-.879.479-.197.275-.355.532-.5.777l-.105.177c-.106.181-.213.362-.32.528a3.39 3.39 0 0 1-.76.861c.69.112 1.736.111 2.657-.12.559-.139.843-.569.993-1.06a3.122 3.122 0 0 0 .126-.75l-.793-.792zm1.44.026c.12-.04.277-.1.458-.183a5.068 5.068 0 0 0 1.535-1.1c1.9-1.996 4.412-5.57 6.052-8.631-2.59 1.927-5.566 4.66-7.302 6.792-.442.543-.795 1.243-1.042 1.826-.121.288-.214.54-.275.72v.001l.575.575zm-4.973 3.04.007-.005a.031.031 0 0 1-.007.004zm3.582-3.043.002.001h-.002z"/> </svg>
+            <h2 class="text-2xl font-semibold ml-2">Penyesuaian Warna</h2>
+          </div>
+            <p class="mt-4">Perbaiki warna dan keseimbangan cahaya dalam foto Anda. Tim kami akan membuat foto Anda terlihat lebih hidup dan menarik.</p>
+          </a>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="card bg-pink-200 hover:bg-pink-300 lg:h-40 transition duration-700 ease-in-out">
+              <a href="sarpras.html#jurusan3">
+              <div class="flex">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-image-fill" viewBox="0 0 16 16"> <path d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12zm5-6.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/> </svg>
+            <h2 class="text-2xl font-semibold ml-2">Manipulasi Gambar</h2>
+          </div>
+            <p class="mt-2">Ciptakan gambar yang unik dan menarik dengan layanan manipulasi gambar kami. Tim kreatif kami siap membantu mewujudkan ide-ide Anda.</p>
+          </a>
+          <div id="about"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Tentang Kami -->
+<section class="bg-purple-800 py-12">
+  <div class="mx-auto px-8">
+      <div class="w-full mx-auto text-center lg:flex">
+        <img src="edit2.jpg" class="w-full img-gallery transition duration-700 ease-in-out object-cover object-center h-64 order-first lg:max-w-lg rounded-xl lg:h-72 mx-auto lg:mx-0">
+        <div class="pt-6 lg:p-8 text-justify space-y-4">
+            <div class="flex">
+            <svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="svg" viewBox="0 0 16 16"> <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill="white"></path> <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" fill="white"></path> <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" fill="white"></path> </svg>
+          <h2 class="text-2xl sm:text-4xl font-bold text-gray-50 ml-4">Tentang Kami</h2>
+          </div>
+          <p class="mt-4 text-gray-200 text-md:text-xl">Kami adalah tim profesional di Digital Desain, didukung oleh individu yang berkomitmen untuk memberikan hasil terbaik kepada pelanggan.</p>
+          <a href="https://www.canva.com/design/DAF1Zpkmmkc/UsS2N6IUlwr7VLOT1ndOrA/edit" class="mt-8 rounded-lg inline-block px-6 py-3 bg-yellow-500 text-white hover:bg-yellow-600 transition duration-300">Lebih Lanjut</a>
+        </div>
+      </div>
+  </div>
+  <p class="mt-4 text-gray-200 font-bold px-8 text-center text-3xl"> Berikut adalah anggota kunci tim kami dari video berikut ini:</p>
+  <video class="mx-auto w-full h-auto p-8 rounded-md" controls>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div id="contact"></div>
+</section>
+
+
+
+  <!-- Kontak Kami -->
+  <section class="bg-black py-16 px-8">
+    <div class="container mx-auto">
+        <div class="flex">
+            <div class="mt-2">
+        <svg style="color: rgb(255, 255, 255);" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="svg" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0z" fill="#ffffff"></path> </svg>
+    </div>
+        <h1 class="text-2xl sm:text-4xl font-bold text-gray-100 text-center mb-16 ml-4">Kontak Kami</h1>
+    </div>
+        <!-- Informasi Kontak -->
+        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+            <!-- Peta Google -->
+            <div class="w-full md:w-1/2">
+                <div class="map-container bg-gray-400 h-400 md:h-96 rounded-lg overflow-hidden">
+                    <!-- Letakkan iframe dari Google Maps di sini -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d585.0414425738975!2d98.62098188436839!3d3.589306808250504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312e4f46b5ab19%3A0x447dc6ab3d465c1e!2sSekolah%20Menengah%20Kejuruan%20Negeri%209%20Medan!5e1!3m2!1sid!2sid!4v1696651793857!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- Informasi Kontak -->
+            <div class="w-full md:w-1/2">
+                <div class="text-gray-100">
+                    <h2 class="text-2xl font-semibold py-4"><strong>Alamat:</strong></h2>
+                    <p class="bg-white rounded-xl text-gray-700 p-4 border-2 border-gray-200">Jl. Patriot No.20 A, Lalang, Kec. Medan Sunggal, Kota Medan, Sumatera Utara</p>
+                    <h2 class="text-2xl font-semibold py-4"><strong>Nomor Telepon:</strong></h2>
+                    <p class="bg-white rounded-xl text-gray-700 p-4 border-2 border-gray-200">(+62) 896-8939-7414</p>
+                    <h2 class="text-2xl font-semibold py-4"><strong>Email:</strong></h2>
+                    <p class="bg-white rounded-xl text-gray-700 p-4 border-2 border-gray-200"> <a href="https://www.smkn9medan.com">digitaldesain@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Komentar Responsif -->
+        <div class="mt-8 text-gray-100">
+            <p class="hidden md:block">Jika Anda memiliki pertanyaan atau ingin menghubungi kami, jangan ragu untuk mengisi formulir di bawah ini:</p>
+            <p class="md:hidden">Jika Anda memiliki pertanyaan atau ingin menghubungi kami, silakan hubungi kami di nomor telepon di atas atau kunjungi situs web kami.</p>
+
+            <!-- Formulir Kontak (bisa ditambahkan jika diperlukan) -->
+            <form>
+                <div class="mt-4">
+                    <label for="nama" class="block font-semibold">Nama:</label>
+                    <input type="text" id="nama" name="nama" class="w-full px-4 py-2 border rounded-md">
+                </div>
+                <div class="mt-4">
+                    <label for="email" class="block font-semibold">Email:</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-md">
+                </div>
+                <div class="mt-4">
+                    <label for="pesan" class="block font-semibold">Pesan:</label>
+                    <textarea id="pesan" name="pesan" class="w-full px-4 py-2 border rounded-md"></textarea>
+                </div>
+                <button type="submit" class="mt-6 px-6 py-3 bg-yellow-500 text-white hover:bg-yellow-600 rounded-md transition duration-300">Kirim Pesan</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto text-center">
+        <div class="mb-4">Ikuti Kami:</div>
+        <div class="flex justify-center space-x-4">
+            <a href="" class="text-blue-500 hover:text-blue-200 transition duration-300">
+            <img src="icons8-facebook.svg" class="mx-auto">Facebook</a>
+            <a href="https://vt.tiktok.com/ZSN9LgT9K/" class="text-blue-500 hover:text-blue-200 transition duration-300">
+            <img src="icons8-tiktok.svg" class="mx-auto">Tiktok</a>
+            <a href="" class="text-blue-500 hover:text-blue-200 transition duration-300">
+            <img src="icons8-instagram.svg" class="mx-auto">Instagram</a>
+        </div>
+        <div class="mt-4">&copy; 2023 Digital Desain Medan</div>
+    </div>
+</footer>
+<script>
+    // Seleksi elemen header
+    const header = document.querySelector('header');
+
+    // Tambahkan event listener untuk mendeteksi scroll
+    window.addEventListener('scroll', () => {
+        // Saat posisi scroll lebih dari 100 pixel dari atas, tambahkan kelas 'scrolled-bg'
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled-bg');
+        } else {
+            // Saat posisi scroll kembali ke atas, hapus kelas 'scrolled-bg'
+            header.classList.remove('scrolled-bg');
+        }
+    });
+    let slideIndex = 0;
+
+function showSlides() {
+    let slides = document.getElementsByClassName("mySlides");
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+
+    setTimeout(showSlides, 2000); // Ganti gambar setiap 2 detik
+}
+
+function plusSlides(n) {
+    showSlide(slideIndex += n);
+}
+
+function showSlide(n) {
+    let slides = document.getElementsByClassName("mySlides");
+
+    if (n > slides.length) {
+        slideIndex = 1;
+    }
+
+    if (n < 1) {
+        slideIndex = slides.length;
+    }
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+}
+
+showSlides();
+// Ambil elemen tombol dan dropdown
+const dropdownButton = document.getElementById('dropdownMenuIconButton');
+const dropdownMenu = document.getElementById('dropdownDots');
+
+// Tambahkan event listener untuk mengontrol dropdown
+dropdownButton.addEventListener('click', function () {
+  toggleDropdown();
+});
+
+// Tambahkan event listener untuk menutup dropdown saat klik di luar dropdown
+document.addEventListener('click', function (event) {
+  const target = event.target;
+  if (!dropdownMenu.contains(target) && !dropdownButton.contains(target)) {
+    closeDropdown();
+  }
+});
+
+// Fungsi untuk membuka atau menutup dropdown
+function toggleDropdown() {
+  const isOpen = dropdownMenu.classList.contains('hidden');
+  closeAllDropdowns();
+
+  if (isOpen) {
+    dropdownMenu.classList.remove('hidden');
+  } else {
+    dropdownMenu.classList.add('hidden');
+  }
+}
+
+// Fungsi untuk menutup dropdown
+function closeDropdown() {
+  dropdownMenu.classList.add('hidden');
+}
+
+// Fungsi untuk menutup semua dropdown kecuali yang sedang diklik
+function closeAllDropdowns() {
+  const allDropdowns = document.querySelectorAll('.dropdown');
+  allDropdowns.forEach((dropdown) => {
+    if (dropdown !== dropdownMenu) {
+      dropdown.classList.add('hidden');
+    }
+  });
+}
+  const readMoreContainers = document.querySelectorAll(".read-more-container");
+        const readMoreContents = document.querySelectorAll(".read-more-content");
+        const readMoreButtons = document.querySelectorAll(".read-more-button");
+        let isReadMore = Array.from({ length: readMoreContainers.length }, () => false);
+
+        // Fungsi untuk menampilkan atau menyembunyikan teks tambahan pada card tertentu
+        function toggleReadMore(index) {
+            return function () {
+                if (!isReadMore[index]) {
+                    readMoreContainers[index].style.maxHeight = "none";
+                    readMoreContents[index].style.display = "block";
+                    readMoreButtons[index].textContent = "Sembunyikan";
+                } else {
+                    readMoreContainers[index].style.maxHeight = "auto"; // Atur tinggi maksimum kembali
+                    readMoreContents[index].style.display = "none";
+                    readMoreButtons[index].textContent = "Lihat Selengkapnya...";
+                }
+                isReadMore[index] = !isReadMore[index];
+            };
+        }
+
+        // Menambahkan event listener untuk tautan "Lihat Selengkapnya" pada setiap card menu
+        readMoreButtons.forEach((button, index) => {
+            button.addEventListener("click", toggleReadMore(index));
+        });
+</script>
+</body>
+</html>
